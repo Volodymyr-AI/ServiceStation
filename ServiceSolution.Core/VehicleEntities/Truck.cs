@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceSolution.Core
+namespace ServiceSolution.Domain.VehicleEntities
 {
-    public class Car : Vehicle
+    public class Truck : Vehicle
     {
+        public bool CheckHydraulics { get; set; }
     }
 }
