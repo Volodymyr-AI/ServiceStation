@@ -1,15 +1,20 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ServiceSolution.Domain.VehicleEntities;
+using ServiceStation.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ServiceStation.Persistence.EntityTypeConfiguration
 {
-    public class VehicleConfigurationc:IEntityTypeConfiguration<Vehicle>
+    public class VehicleConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : Vehicle
     {
-        public void Configure(EntityTypeBuilder<Vehicle> builder)
+        public virtual void Configure(EntityTypeBuilder<TEntity> builder)
         {
-            builder.HasKey(vehicle => vehicle.Id);
-            builder.HasIndex(vehicle => vehicle.Id).IsUnique();
+            builder.Property(v => v.VehicleId).IsRequired();
         }
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceSolution.Domain.VehicleEntities
+namespace ServiceStation.Domain
 {
     public class Truck : Vehicle
     {
-        public bool CheckHydraulics { get; set; }
+        public int Hydraulics { get; set; }
     }
 }

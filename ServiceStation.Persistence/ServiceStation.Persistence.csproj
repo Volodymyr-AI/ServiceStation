@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceStation.Application\ServiceStation.Application.csproj" />
+    <ProjectReference Include="..\ServiceStation.Domain\ServiceStation.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
