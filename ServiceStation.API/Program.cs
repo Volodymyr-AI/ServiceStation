@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ServiceStation.API.Data;
+using ServiceStation.Persistence;
 
 namespace ServiceStation.API
 {
@@ -13,9 +13,7 @@ namespace ServiceStation.API
 
             builder.Services.AddControllers();
 
-            //Added connection string
-            var connectionString = builder.Services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
+            
 
             var app = builder.Build();
 

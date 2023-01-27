@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceStation.Domain\ServiceStation.Domain.csproj" />
+    <ProjectReference Include="..\ServiceStation.Persistence\ServiceStation.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
