@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ServiceStation.Domain\ServiceStation.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Vehicles\Queries\" />
+  </ItemGroup>
+
 </Project>
