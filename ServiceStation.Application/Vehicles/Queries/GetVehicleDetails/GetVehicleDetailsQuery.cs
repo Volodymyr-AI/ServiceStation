@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails
 {
-    internal class GetVehicleDetailsQuery
+    public class GetVehicleDetailsQuery
     {
     }
 }

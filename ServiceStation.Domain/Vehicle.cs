@@ -15,5 +15,7 @@ namespace ServiceStation.Domain
         public int Brakes { get; set; }
         public int Chassis { get; set; }
         public int AveragePoint { get; set; }
+
+        //IEnumerable
     }
 }
