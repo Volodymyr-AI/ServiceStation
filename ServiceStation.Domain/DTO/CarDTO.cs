@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStation.Domain.BusinessLogic.VehicleAssessment
+namespace ServiceStation.Domain.DTO
 {
-    public class VehicleAssessment
+    public class CarDTO : VehicleDTO
     {
+        public bool WheelBalancing { get; set; } // optional
     }
 }

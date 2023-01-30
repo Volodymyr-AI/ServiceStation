@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStation.Domain.BusinessLogic.RepairPrice
+namespace ServiceStation.Domain.DTO
 {
-    public class RepairPriceBill
+    public class Truck : Vehicle
     {
-        
+        public int Hydraulics { get; set; }
     }
 }

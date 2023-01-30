@@ -15,7 +15,7 @@ namespace ServiceStation.Application.Vehicles.Commands.CreateVehicle.CreateComma
         }
         public async Task<Guid> Handle(CreateBusCommand request, CancellationToken cancellationToken)
         {
-            var bus = new Bus
+            var bus = new BusDTO
             {
                 VehicleId = Guid.NewGuid(),
                 Body = request.Body,

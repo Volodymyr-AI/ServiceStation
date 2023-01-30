@@ -17,7 +17,7 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.DetailsV
 
         public override void Mapping(Profile profile)
         {
-            profile.CreateMap<Bus, BusDetailsVm>()
+            profile.CreateMap<BusDTO, BusDetailsVm>()
                 .ForMember(busvm => busvm.Body,
                     opt => opt.MapFrom(bus => bus.Body))
                 .ForMember(busvm => busvm.Wheels,

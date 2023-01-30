@@ -2,7 +2,7 @@
 using ServiceStation.Application.Common;
 using ServiceStation.Application.Interfaces;
 using ServiceStation.Application.Vehicles.Commands.DeleteVehicle.DeleteComand;
-using ServiceStation.Domain;
+using ServiceStation.Domain.DTO;
 using System.Xml;
 
 namespace ServiceStation.Application.Vehicles.Commands.DeleteVehicle.DeleteComandHandler
@@ -24,7 +24,7 @@ namespace ServiceStation.Application.Vehicles.Commands.DeleteVehicle.DeleteComan
            
             if(car == null || car.VehicleId != request.VehicleId)
             {
-                throw new NotFoundException(nameof(Car), request.VehicleId);
+                throw new NotFoundException(nameof(CarDTO), request.VehicleId);
             }
 
             _dbContext.Cars.Remove(car);

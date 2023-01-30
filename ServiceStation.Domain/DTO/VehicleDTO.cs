@@ -1,10 +1,12 @@
-﻿using AutoMapper;
-using ServiceStation.Application.Common.Mappings;
-using ServiceStation.Domain;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.DetailsVm
+namespace ServiceStation.Domain.DTO
 {
-    public abstract class VehicleDetailsVm : IMapWith<VehicleDTO>
+    public abstract class Vehicle
     {
         public Guid VehicleId { get; set; }
         public int Body { get; set; }
@@ -14,6 +16,6 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.DetailsV
         public int Chassis { get; set; }
         public int AveragePoint { get; set; }
 
-        public abstract void Mapping(Profile profile);
+        //IEnumerable
     }
 }

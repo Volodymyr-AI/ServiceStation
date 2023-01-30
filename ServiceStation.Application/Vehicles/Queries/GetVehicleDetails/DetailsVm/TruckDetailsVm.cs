@@ -14,7 +14,7 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.DetailsV
 
         public override void Mapping(Profile profile)
         {
-            profile.CreateMap<Truck, TruckDetailsVm>()
+            profile.CreateMap<TruckDTO, TruckDetailsVm>()
                 .ForMember(truckvm => truckvm.Body,
                     opt => opt.MapFrom(truck => truck.Body))
                 .ForMember(truckvm => truckvm.Wheels,

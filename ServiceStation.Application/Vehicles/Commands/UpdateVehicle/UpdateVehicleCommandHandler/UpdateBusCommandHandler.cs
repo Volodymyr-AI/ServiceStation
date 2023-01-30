@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceStation.Application.Common;
 using ServiceStation.Application.Interfaces;
 using ServiceStation.Application.Vehicles.Commands.UpdateVehicle.UpdateCommand;
-using ServiceStation.Domain;
+using ServiceStation.Domain.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace ServiceStation.Application.Vehicles.Commands.UpdateVehicle.UpdateVehic
 
             if (entity == null || entity.VehicleId != request.VehicleId)
             {
-                throw new NotFoundException(nameof(Car), request.VehicleId);
+                throw new NotFoundException(nameof(CarDTO), request.VehicleId);
             }
 
             entity.Body = request.Body;

@@ -28,7 +28,7 @@ namespace ServiceStation.Application.Vehicles.Commands.DeleteVehicle.DeleteComan
 
             if (truck == null || truck.VehicleId != request.VehicleId)
             {
-                throw new NotFoundException(nameof(Truck), request.VehicleId);
+                throw new NotFoundException(nameof(TruckDTO), request.VehicleId);
             }
 
             _dbContext.Trucks.Remove(truck);

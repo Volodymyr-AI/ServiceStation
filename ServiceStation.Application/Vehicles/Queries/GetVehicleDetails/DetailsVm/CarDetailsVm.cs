@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ServiceStation.Domain;
+using ServiceStation.Domain.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.DetailsV
 
         public override void Mapping(Profile profile)
         {
-            profile.CreateMap<Car, CarDetailsVm>()
+            profile.CreateMap<CarDTO, CarDetailsVm>()
                 .ForMember(carvm => carvm.Body,
                     opt => opt.MapFrom(car => car.Body))
                 .ForMember(carvm => carvm.Wheels,
