@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ServiceStation.Domain;
+using ServiceStation.Domain.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
