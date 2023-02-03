@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceStation.Domain.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace ServiceStation.Application.BusinessLogic
     public delegate T RepairPrice<T>();
     public class ServiceStationBLL
     {
-        if(typeof(Car))
+        
+        
     }
 }

@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceStation.API", "Servi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F4A11AB5-03B8-4116-AE26-981834E9174D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStation.Persistence", "ServiceStation.Persistence\ServiceStation.Persistence.csproj", "{A1982A65-7B47-4ED2-9C6F-311A9130FFC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceStation.Persistence", "ServiceStation.Persistence\ServiceStation.Persistence.csproj", "{A1982A65-7B47-4ED2-9C6F-311A9130FFC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceStation.Application", "ServiceStation.Application\ServiceStation.Application.csproj", "{591841CC-DCF5-4AEF-B9E1-4E8277E0A9D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceStation.Application", "ServiceStation.Application\ServiceStation.Application.csproj", "{591841CC-DCF5-4AEF-B9E1-4E8277E0A9D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
