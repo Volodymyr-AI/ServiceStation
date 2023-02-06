@@ -1,26 +1,14 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using ServiceStation.Application.Vehicles.Commands.CreateVehicle.CreateCommand;
-using ServiceStation.Domain.DTO;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceStation.API.Controllers
 {
     public class ServiceStationController : Controller
     {
-        private readonly IMapper _mapper;
-
-        public ServiceStationController(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
-
         [Route("/car")]
         [HttpPost]
-        public async IActionResult Index(CarDTO carDto, ) // create vehicle
+        public async IActionResult CreateVehicle() // create vehicle
         {
-            var command = _mapper.Map<CreateCarCommand>(CarDTO);
-            command.VehicleId = VehicleId;
-            var vehicleId = await Mediator
+            
         }
         [Route("/car/bulk")]
         [HttpPost]

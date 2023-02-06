@@ -1,6 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using ServiceStation.Persistence;
-using System.Configuration;
 
 namespace ServiceStation.API
 {
@@ -14,13 +12,15 @@ namespace ServiceStation.API
 
             builder.Services.AddControllers();
 
-            
+            builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
+
             builder.Services.AddMemoryCache();
             builder.Services.AddControllers();
             //builder.Services.AddDbContext<StationDbContext>(options => options.UseSqlServer(connectionString));
 
             var app = builder.Build();
 
+            
             // Configure the HTTP request pipeline.
 
             app.UseAuthorization();
