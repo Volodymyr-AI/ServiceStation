@@ -16,7 +16,7 @@ namespace ServiceStation.API
 
             builder.Services.AddMemoryCache();
             builder.Services.AddControllers();
-            //builder.Services.AddDbContext<StationDbContext>(options => options.UseSqlServer(connectionString));
+            
 
             var app = builder.Build();
 
