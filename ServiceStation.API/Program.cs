@@ -11,11 +11,9 @@ namespace ServiceStation.API
             // Add services to the container.
 
             builder.Services.AddControllers();
-
             builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
 
-            builder.Services.AddMemoryCache();
-            builder.Services.AddControllers();
+            
             
 
             var app = builder.Build();
@@ -24,7 +22,6 @@ namespace ServiceStation.API
             // Configure the HTTP request pipeline.
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

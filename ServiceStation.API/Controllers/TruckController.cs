@@ -65,6 +65,7 @@ namespace ServiceStation.API.Controllers
         [HttpPost]
         public IActionResult Repair(Truck truck)
         {
+
             return Ok();
         }
     }
