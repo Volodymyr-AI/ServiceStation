@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceStation.Domain", "Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceStation.Application", "ServiceStation.Application\ServiceStation.Application.csproj", "{AE219924-6D08-4095-AC4E-8898F3107162}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{049636BB-F508-456B-BA58-7916BE005BF9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceStation.Persistence", "ServiceStation.Persistence\ServiceStation.Persistence.csproj", "{82B43439-4224-4F1C-8BFF-1791544FE5FF}"
 EndProject
 Global
