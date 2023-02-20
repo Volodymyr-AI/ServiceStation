@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using ServiceStation.Application.Interfaces;
-using ServiceStation.Application.VehicleCommands.CreateVehicle.CreateCommand;
+using ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommand;
 using ServiceStation.Domain;
 
-namespace ServiceStation.Application.VehicleCommands.CreateVehicle.CreateCommandHandler
+namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommandHandler
 {
     public class CreateCarCommandHandler : IRequestHandler<CreateCarCommand, Guid>
     {

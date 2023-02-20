@@ -1,4 +1,4 @@
-﻿namespace ServiceStation.Application.VehicleCommands.CreateVehicle.CreateCommand
+﻿namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommand
 {
     public class CreateCarCommand : CreateVehicleCommand
     {

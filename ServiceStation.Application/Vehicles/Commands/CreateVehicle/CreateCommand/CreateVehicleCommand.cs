@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ServiceStation.Domain;
 
-namespace ServiceStation.Application.VehicleCommands.CreateVehicle.CreateCommand
+namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommand
 {
     public class CreateVehicleCommand : IRequest<Guid>
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStation.Application.VehicleCommands.CreateVehicle.CreateCommand
+namespace ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.UpdateCommand
 {
-    public class CreateTruckCommand : CreateVehicleCommand
+    public class UpdateTruckCommand : UpdateVehicleCommand
     {
         public int Hydraulics { get; set; }
     }
