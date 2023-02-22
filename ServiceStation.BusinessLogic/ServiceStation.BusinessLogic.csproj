@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceStation.Application\ServiceStation.Application.csproj" />
+    <ProjectReference Include="..\ServiceStation.Domain\ServiceStation.Domain.csproj" />
+    <ProjectReference Include="..\ServiceStation.Persistense\ServiceStation.Persistense.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -8,7 +8,6 @@ namespace ServiceStation.Persistense.EntityTypeConfiguration
         public override void Configure(EntityTypeBuilder<Truck> builder)
         {
             base.Configure(builder);
-            builder.Property(t => t.Hydraulics).HasMaxLength(100);
         }
     }
 }
