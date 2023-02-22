@@ -12,9 +12,9 @@ namespace ServiceStation.BusinessLogic
             _appDbContext = appDbContext;
         }
 
-        public double CalculateVehicleState(Guid Id)
+        public void CalculateVehicleState(Guid Id)
         {
-            var vehicle = _appDbContext.QueryFirstOrDefault
+            
         }
     }
 }
