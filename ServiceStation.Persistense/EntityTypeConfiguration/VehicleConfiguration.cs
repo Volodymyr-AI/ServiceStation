@@ -11,11 +11,6 @@ namespace ServiceStation.Persistense.EntityTypeConfiguration
         {
             builder.HasKey(v => v.Id);
             builder.HasIndex(v => v.Id).IsUnique();
-            builder.Property(v => v.Body).HasMaxLength(100);
-            builder.Property(v => v.Wheels).HasMaxLength(100);
-            builder.Property(v => v.Engine).HasMaxLength(100);
-            builder.Property(v => v.Breaks).HasMaxLength(100);
-            builder.Property(v => v.Undercarriage).HasMaxLength(100);
         }
     }
 }
