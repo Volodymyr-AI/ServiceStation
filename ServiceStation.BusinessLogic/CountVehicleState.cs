@@ -1,5 +1,6 @@
 ﻿using ServiceStation.Application.Interfaces;
 using Dapper;
+using ServiceStation.Domain;
 
 namespace ServiceStation.BusinessLogic
 {
@@ -14,7 +15,7 @@ namespace ServiceStation.BusinessLogic
 
         public void CalculateVehicleState(Guid Id)
         {
-            
+            var vehicle = _appDbContext.QueryFirstOrDefault<Vehicle>("")
         }
     }
 }

@@ -5,6 +5,7 @@ namespace ServiceStation.Application.Interfaces
 {
     public interface IAppDbContext
     {
+        DbSet<Vehicle> Vehicles { get; }
         DbSet<Car> Cars { get; set; }
         DbSet<Bus> Buses { get; set; }
         DbSet<Truck> Trucks { get; set; }
