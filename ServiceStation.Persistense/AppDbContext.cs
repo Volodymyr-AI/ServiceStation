@@ -17,12 +17,12 @@ namespace ServiceStation.Persistense
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=ServiceStaionDb;Trusted_Connection=True;");
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.ApplyConfiguration(new CarConfiguration());
-        //    modelBuilder.ApplyConfiguration(new TruckConfiguration());  
-        //    modelBuilder.ApplyConfiguration(new BusConfiguration());
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CarConfiguration());
+            modelBuilder.ApplyConfiguration(new TruckConfiguration());  
+            modelBuilder.ApplyConfiguration(new BusConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
