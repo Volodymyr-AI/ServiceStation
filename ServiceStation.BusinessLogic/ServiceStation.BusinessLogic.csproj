@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ServiceStation.Persistense\ServiceStation.Persistense.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SetPriceForRepair\" />
+  </ItemGroup>
+
 </Project>
