@@ -15,30 +15,12 @@ namespace ServiceStation.Application.Vehicles.Commands.UpdateVehicle.UpdateComma
             RuleFor(updateTruckValidator =>
                     updateTruckValidator.Id).NotEqual(Guid.Empty);
 
-            RuleFor(updateTruckValidator =>
-                    updateTruckValidator.Body)
-                .GreaterThan(0)
-                .LessThan(100);
-            RuleFor(updateTruckValidator =>
-                   updateTruckValidator.Wheels)
-               .GreaterThan(0)
-               .LessThan(100);
-            RuleFor(updateTruckValidator => 
-                    updateTruckValidator.Breaks)
-               .GreaterThan(0)
-               .LessThan(100);
-            RuleFor(UpdateTruckValidator =>
-                    UpdateTruckValidator.Engine)
-                .GreaterThan(0)
-                .LessThan(100);
-            RuleFor(UpdateTruckValidator =>
-                    UpdateTruckValidator.Undercarriage)
-                .GreaterThan(0)
-                .LessThan(100);
-            RuleFor(UpdateTruckValidator =>
-                    UpdateTruckValidator.Hydraulics)
-                .GreaterThan(0)
-                .LessThan(100);
+            RuleFor(updateCarValidator => updateCarValidator.Body).InclusiveBetween(0, 100);
+            RuleFor(updateCarValidator => updateCarValidator.Wheels).InclusiveBetween(0, 100);
+            RuleFor(updateCarValidator => updateCarValidator.Breaks).InclusiveBetween(0, 100);
+            RuleFor(updateCarValidator => updateCarValidator.Engine).InclusiveBetween(0, 100);
+            RuleFor(updateCarValidator => updateCarValidator.Undercarriage).InclusiveBetween(0, 100);
+            RuleFor(updateCarValidator => updateCarValidator.Hydraulics).InclusiveBetween(0, 100);
         }
     }
 }

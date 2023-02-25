@@ -5,7 +5,7 @@ using ServiceStation.Domain;
 
 namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
 {
-    public class RepairCarCommandHandler : IRequestHandler<RepairVehicleCommand, Guid>
+    public class RepairCarCommandHandler : IRequestHandler<RepairVehicleCommand, Unit>
     {
         private readonly IAppDbContext _context;
 
@@ -28,13 +28,24 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
                 car.Undercarriage = 100;
                 car.WheelBalancing = false;
 
-                var average = (car.Body + car.Wheels + car.Engine + car.Breaks + car.Undercarriage) / 5.0;
+                //count average of all integer fields
+                var integerProperties = typeof(Car).GetProperties().Where(prop => prop.PropertyType == typeof(int)).ToList();
+
+                var sum = 0;
+
+                foreach (var prop in integerProperties)
+                {
+                    sum += (int)prop.GetValue(car);
+                }
+
+                var average = sum / (double)integerProperties.Count;
+
                 car.State = average;
 
                 await _context.SaveChangesAsync(cancellationToken);
             }
 
-            return Guid.NewGuid();
+            return Unit.Value;
         }
     }
 }

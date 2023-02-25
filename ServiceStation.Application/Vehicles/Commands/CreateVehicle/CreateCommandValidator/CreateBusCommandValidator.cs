@@ -12,32 +12,13 @@ namespace ServiceStation.Application.Vehicles.Commands.CreateVehicle.CreateComma
     {
         public CreateBusCommandValidator()
         {
-            RuleFor(createVehicleCommand =>
-                    createVehicleCommand.Id).NotEqual(Guid.Empty);
-            RuleFor(createVehicleCommand =>
-                    createVehicleCommand.Body)
-                .LessThan(100)
-                .GreaterThan(0);
-            RuleFor(createVehicleCommand =>
-                    createVehicleCommand.Engine)
-                .LessThan(100)
-                .GreaterThan(0);
-            RuleFor(createVehicleCommand =>
-                    createVehicleCommand.Wheels)
-                .LessThan(100)
-                .GreaterThan(0);
-            RuleFor(createVehicleCommand =>
-                    createVehicleCommand.Undercarriage)
-                .LessThan(100)
-                .GreaterThan(0);
-            RuleFor(createVehicleCommand =>
-                    createVehicleCommand.Breaks)
-                .LessThan(100)
-                .GreaterThan(0);
-            RuleFor(createBusCommand =>
-                    createBusCommand.InteriorAndHandrails)
-                .LessThan(100)
-                .GreaterThan(0);
+            RuleFor(createBusCommand => createBusCommand.Id).NotEqual(Guid.Empty);
+            RuleFor(createBusCommand => createBusCommand.Body).InclusiveBetween(0, 100);
+            RuleFor(createBusCommand => createBusCommand.Engine).InclusiveBetween(0, 100);
+            RuleFor(createBusCommand => createBusCommand.Wheels).InclusiveBetween(0, 100);
+            RuleFor(createBusCommand => createBusCommand.Undercarriage).InclusiveBetween(0, 100);
+            RuleFor(createBusCommand => createBusCommand.Breaks).InclusiveBetween(0, 100);
+            RuleFor(createBusCommand => createBusCommand.InteriorAndHandrails).InclusiveBetween(0, 100);
         }
     }
 }
