@@ -34,6 +34,7 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.Upda
             entity.Body = request.Body;
             //optional only for car
             entity.WheelBalancing = request.WheelBalancing;
+            entity.State = (request.Engine + request.Wheels + request.Breaks + request.Undercarriage + request.Body) / 5.0;
 
             await _dbContext.SaveChangesAsync(cancellationToken);
 

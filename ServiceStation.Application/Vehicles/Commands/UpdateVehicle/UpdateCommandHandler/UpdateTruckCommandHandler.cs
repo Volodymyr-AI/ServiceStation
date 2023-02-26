@@ -33,6 +33,7 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.Upda
             entity.Body = request.Body;
             //optinal only for truck
             entity.Hydraulics = request.Hydraulics;
+            entity.State = (request.Engine + request.Wheels + request.Breaks + request.Undercarriage + request.Body + request.Hydraulics) / 6.0;
 
             return entity.Id;
         }

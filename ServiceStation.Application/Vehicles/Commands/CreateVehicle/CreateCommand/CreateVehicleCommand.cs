@@ -10,7 +10,8 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.Crea
         public int Wheels { get; set; }
         public int Engine { get; set; }
         public int Breaks { get; set; }
-
         public int Undercarriage { get; set; }
+
+        //public double State { get; set; }
     }
 }

@@ -35,7 +35,9 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.Upda
             //optional only for bus
             entity.InteriorAndHandrails = request.InteriorAndHandrails;
             entity.ChangeSeats = request.ChangeSeats;
+            entity.State = (request.Engine + request.Wheels + request.Breaks + request.Undercarriage + request.Body + request.InteriorAndHandrails) / 6.0;
 
+            await _appDbContext.SaveChangesAsync(cancellationToken);
 
             return entity.Id;
         }

@@ -2,6 +2,7 @@
 using ServiceStation.Application.Interfaces;
 using ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommand;
 using ServiceStation.Domain;
+using System.Reflection;
 
 namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommandHandler
 {
@@ -24,7 +25,8 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.Crea
                 Engine = request.Engine,
                 Breaks = request.Breaks,
                 Undercarriage = request.Undercarriage,
-                WheelBalancing = request.WheelBalancing
+                WheelBalancing = request.WheelBalancing,
+                State = (request.Body + request.Wheels + request.Engine + request.Breaks + request.Undercarriage) / 5.0
             };
 
             await _appDbContext.Cars.AddAsync(car, cancellationToken);

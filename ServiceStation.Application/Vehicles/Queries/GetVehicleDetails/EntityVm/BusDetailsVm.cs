@@ -16,7 +16,7 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm
         public int Engine { get; set; }
         public int Breaks { get; set; }
         public int Undercarriage { get; set; }
-        public double State { get; set; }
+        public double Price { get; set; }
         //optional
         public int InteriorAndHandrails { get; set; }
         public bool ChangeSeats { get; set; }
@@ -34,8 +34,6 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm
                     opt => opt.MapFrom(bus => bus.Breaks))
                 .ForMember(busvm => busvm.Undercarriage,
                     opt => opt.MapFrom(bus => bus.Undercarriage))
-                .ForMember(busvm => busvm.State,
-                    opt => opt.MapFrom(bus => bus.State))
                 //OPTIONAL
                 .ForMember(busvm => busvm.InteriorAndHandrails,
                     opt => opt.MapFrom(bus => bus.InteriorAndHandrails))

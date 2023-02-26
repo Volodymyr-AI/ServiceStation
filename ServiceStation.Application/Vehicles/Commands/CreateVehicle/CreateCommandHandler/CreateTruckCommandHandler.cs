@@ -24,7 +24,8 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.Crea
                 Engine = request.Engine,
                 Breaks = request.Breaks,
                 Undercarriage = request.Undercarriage,
-                Hydraulics = request.Hydraulics
+                Hydraulics = request.Hydraulics,
+                State = (request.Body + request.Wheels + request.Engine + request.Breaks + request.Undercarriage + request.Hydraulics) / 6.0
             };
 
             await _appDbContext.Trucks.AddAsync(truck, cancellationToken);
