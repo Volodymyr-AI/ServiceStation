@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="DTOs\" />
+    <PackageReference Include="MediatR" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceStation.Application\ServiceStation.Application.csproj" />
+    <ProjectReference Include="..\ServiceStation.BusinessLogic\ServiceStation.BusinessLogic.csproj" />
   </ItemGroup>
 
 </Project>
