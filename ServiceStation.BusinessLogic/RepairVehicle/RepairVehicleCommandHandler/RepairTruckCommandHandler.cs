@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ServiceStation.Application.Interfaces;
+using ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCoommand;
 using ServiceStation.Domain;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
 {
-    public class RepairTruckCommandHandler : IRequestHandler<RepairVehicleCommand, Unit>
+    public class RepairTruckCommandHandler : IRequestHandler<RepairTruckCommand, Unit>
     {
         private readonly IAppDbContext _context;
 
@@ -19,7 +20,7 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
             _context = context;
         }
 
-        public async Task<Unit> Handle(RepairVehicleCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RepairTruckCommand request, CancellationToken cancellationToken)
         {
             var truck =
                 await _context.Trucks.FirstOrDefaultAsync(truck => truck.Id == request.Id, cancellationToken);

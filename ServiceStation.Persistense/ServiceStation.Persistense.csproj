@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ServiceStation.Application\ServiceStation.Application.csproj" />
     <ProjectReference Include="..\ServiceStation.Domain\ServiceStation.Domain.csproj" />
   </ItemGroup>
 

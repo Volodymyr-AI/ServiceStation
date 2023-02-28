@@ -2,17 +2,18 @@
 using Microsoft.EntityFrameworkCore;
 using ServiceStation.Application.Common;
 using ServiceStation.Application.Interfaces;
+using ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCoommand;
 using ServiceStation.Domain;
 
 namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
 {
-    public class RepairBusCommandHandler : IRequestHandler<RepairVehicleCommand, Unit>
+    public class RepairBusCommandHandler : IRequestHandler<RepairTruckCommand, Unit>
     {
         private readonly IAppDbContext _context;
 
         public RepairBusCommandHandler(IAppDbContext context) => _context = context;
 
-        public async Task<Unit> Handle(RepairVehicleCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RepairTruckCommand request, CancellationToken cancellationToken)
         {
             var bus =  await _context.Buses.FirstOrDefaultAsync(bus => bus.Id == request.Id, cancellationToken);
 
