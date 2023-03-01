@@ -27,26 +27,24 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
 
             if (truck != null)
             {
-                truck.Body = 100;
-                truck.Wheels = 100;
-                truck.Engine = 100;
-                truck.Breaks = 100;
-                truck.Undercarriage = 100;
-                truck.Hydraulics = 100;
-
                 //count average of all integer fields
-                var integerProperties = typeof(Truck).GetProperties().Where(prop => prop.PropertyType == typeof(int)).ToList();
+                var integerProperties = typeof(Truck).GetProperties().Where(prop => prop.PropertyType == typeof(int));
 
-                var sum = 0;
-
-                foreach (var prop in integerProperties)
+                foreach(var property in integerProperties)
                 {
-                    sum += (int)prop.GetValue(truck);
+                    property.SetValue(truck, 100);
                 }
 
-                var average = sum / (double)integerProperties.Count;
+                //var sum = 0;
+                //
+                //foreach (var prop in integerProperties)
+                //{
+                //    sum += (int)prop.GetValue(truck);
+                //}
+                //
+                //var average = sum / (double)integerProperties.Count;
 
-                truck.State = average;
+                truck.State = 100.0;
 
                 await _context.SaveChangesAsync(cancellationToken);
             }

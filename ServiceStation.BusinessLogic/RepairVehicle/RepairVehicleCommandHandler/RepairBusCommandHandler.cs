@@ -23,26 +23,14 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
             }
             else
             {
-                bus.Body = 100;
-                bus.Wheels = 100;
-                bus.Engine = 100;
-                bus.Breaks = 100;
-                bus.Undercarriage = 100;
-                bus.InteriorAndHandrails = 100;
-                bus.ChangeSeats = false;
+                var integerProperties = typeof(Bus).GetProperties().Where(prop => prop.PropertyType == typeof(int));
 
-                var integerProperties = typeof(Bus).GetProperties().Where(prop => prop.PropertyType == typeof(int)).ToList();
-
-                var sum = 0;
-
-                foreach(var prop in integerProperties)
+                foreach(var property in integerProperties)
                 {
-                    sum += (int)prop.GetValue(bus);
+                    property.SetValue(bus, 100);
                 }
 
-                var average = sum / (double)integerProperties.Count;
-
-                bus.State = average;
+                bus.State = 100.0;
 
                 await _context.SaveChangesAsync(cancellationToken);
             }

@@ -22,26 +22,16 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
 
             if (car != null)
             {
-                car.Body = 100;
-                car.Wheels = 100;
-                car.Engine = 100;
-                car.Breaks = 100;
-                car.Undercarriage = 100;
-                car.WheelBalancing = false;
+                var integerProperties = car.GetType()
+                    .GetProperties()
+                    .Where(p => p.PropertyType == typeof(int)).ToList();
 
-                //count average of all integer fields
-                var integerProperties = typeof(Car).GetProperties().Where(prop => prop.PropertyType == typeof(int)).ToList();
-
-                var sum = 0;
-
-                foreach (var prop in integerProperties)
+                foreach(var property in integerProperties)
                 {
-                    sum += (int)prop.GetValue(car);
+                    property.SetValue(car, 100);
                 }
 
-                var average = sum / (double)integerProperties.Count;
-
-                car.State = average;
+                car.State = 100.0;
 
                 await _context.SaveChangesAsync(cancellationToken);
             }
