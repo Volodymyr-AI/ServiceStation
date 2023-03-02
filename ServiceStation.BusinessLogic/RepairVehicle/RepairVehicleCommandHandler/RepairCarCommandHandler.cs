@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ServiceStation.Application.Common;
 using ServiceStation.Application.Interfaces;
 using ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCoommand;
 using ServiceStation.Domain;
@@ -31,9 +32,13 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
                     property.SetValue(car, 100);
                 }
 
-                car.State = 100.0;
+                car.State = 100.0; // average state is 100%, car is fully repaired
 
                 await _context.SaveChangesAsync(cancellationToken);
+            }
+            else
+            {
+                throw new NotFoundException(nameof(Car), request.Id);
             }
 
             return Unit.Value;

@@ -4,6 +4,7 @@ using ServiceStation.Application.Common;
 using ServiceStation.Application.Interfaces;
 using ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCoommand;
 using ServiceStation.Domain;
+using System.ComponentModel.Design;
 
 namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
 {
@@ -17,11 +18,8 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
         {
             var bus =  await _context.Buses.FirstOrDefaultAsync(bus => bus.Id == request.Id, cancellationToken);
 
-            if(bus == null)
-            {
-                throw new NotFoundException(nameof(Bus), request.Id);
-            }
-            else
+            
+            if(bus != null)
             {
                 var integerProperties = typeof(Bus).GetProperties().Where(prop => prop.PropertyType == typeof(int));
 
@@ -33,6 +31,10 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
                 bus.State = 100.0;
 
                 await _context.SaveChangesAsync(cancellationToken);
+            }
+            else
+            {
+                throw new NotFoundException(nameof(Bus), request.Id);
             }
 
 

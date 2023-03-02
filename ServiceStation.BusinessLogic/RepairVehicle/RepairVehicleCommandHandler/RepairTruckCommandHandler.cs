@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ServiceStation.Application.Common;
 using ServiceStation.Application.Interfaces;
 using ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCoommand;
 using ServiceStation.Domain;
@@ -47,6 +48,10 @@ namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCommandHandler
                 truck.State = 100.0;
 
                 await _context.SaveChangesAsync(cancellationToken);
+            }
+            else
+            {
+                throw new NotFoundException(nameof(Truck), request.Id);
             }
 
             return Unit.Value;
