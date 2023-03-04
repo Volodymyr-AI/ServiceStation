@@ -9,10 +9,16 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.Crea
     public class CreateCarCommandHandler : IRequestHandler<CreateCarCommand, Guid>
     {
         private readonly IAppDbContext _appDbContext;
+        private ServiceStation.Persistense.AppDbContext context;
 
         public CreateCarCommandHandler(IAppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
+        }
+
+        public CreateCarCommandHandler(ServiceStation.Persistense.AppDbContext context)
+        {
+            this.context = context;
         }
 
         public async Task<Guid> Handle(CreateCarCommand request, CancellationToken cancellationToken)
