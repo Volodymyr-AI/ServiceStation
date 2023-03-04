@@ -20,7 +20,8 @@ namespace ServiceStation.API
                 config.AddProfile(new AssemblyMappingProfile(typeof(IAppDbContext).Assembly));
             });
 
-            //builder.Services.AddApplication();
+            builder.Services.AddApplication();
+            builder.Services.AddPersistense(builder.Configuration);
 
             builder.Services.AddCors(options =>
             {

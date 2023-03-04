@@ -16,7 +16,6 @@
     <ProjectReference Include="..\ServiceStation.BusinessLogic\ServiceStation.BusinessLogic.csproj" />
     <ProjectReference Include="..\ServiceStation.Domain\ServiceStation.Domain.csproj" />
     <ProjectReference Include="..\ServiceStation.Persistense\ServiceStation.Persistense.csproj" />
-    <ProjectReference Include="..\ServiceStation.Tests\ServiceStation.Tests.csproj" />
   </ItemGroup>
 
 </Project>

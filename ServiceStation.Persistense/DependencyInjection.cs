@@ -9,13 +9,10 @@ namespace ServiceStation.Persistense
     {
         public static IServiceCollection AddPersistense(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration["DbConnection"];
-            services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlServer(connectionString);
-            });
+            services.AddDbContext<AppDbContext>();
             services.AddScoped<IAppDbContext>(provider =>
                 (IAppDbContext)provider.GetService<AppDbContext>());
+
             return services;
         }
     }
