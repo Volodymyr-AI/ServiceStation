@@ -1,15 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MediatR;
 using System.Reflection;
+using MediatR;
 
 namespace ServiceStation.Application
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApplication
-            (IServiceCollection services)
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(Application.AssemblyMarker).Assembly);
             return services;
         }
     }

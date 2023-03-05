@@ -1,8 +1,8 @@
 using ServiceStation.Application.Common.Mappings;
 using ServiceStation.Application.Interfaces;
+using ServiceStation.Application;
 using ServiceStation.Persistense;
 using System.Reflection;
-using ServiceStation.Application;
 
 namespace ServiceStation.API
 {
