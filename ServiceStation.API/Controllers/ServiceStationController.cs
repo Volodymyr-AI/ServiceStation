@@ -14,39 +14,34 @@ using ServiceStation.BusinessLogic.SetPriceForRepair;
 
 namespace ServiceStation.API.Controllers
 {
-    [ApiController]
     [Produces("application/json")]
     [Route("api/[controller]")]
-    public class ServiceStationController : ControllerBase
+    public class ServiceStationController : BaseController
     {
-        private IMapper _mappper;
-        IMediator _mediator;
+        private readonly IMapper _mapper;
 
-        public ServiceStationController(IMapper mappper, IMediator mediator)
+        public ServiceStationController(IMapper mapper)
         {
-            _mappper = mappper;
-            _mediator = mediator;
-        } 
-
-
-
+            _mapper = mapper;
+        }
 
         // Car commands and queries
-        [HttpPost("/car")]
+        [HttpPost]
+        [Route("/car")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<Guid>> CreateCar([FromBody] CreateCarDto createCarDto)
         {
-            var command = _mappper.Map<CreateCarCommand>(createCarDto);
-            var id = await _mediator.Send(command);
-            
-            return Ok(id);
+            var command = _mapper.Map<CreateCarCommand>(createCarDto);
+            var carId = await _mediator.Send(command);
+            return Ok(carId);
         }
 
-        [HttpPut("/car/{id}")]
+        [HttpPut]
+        [Route("/car/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> UpdateCar([FromBody] UpdateCarDto updateCarDto)
         {
-            var command = _mappper.Map<UpdateCarCommand>(updateCarDto);
+            var command = _mapper.Map<UpdateCarCommand>(updateCarDto);
             await _mediator.Send(command);
 
             return NoContent();
@@ -68,7 +63,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> RepairCar([FromBody] RepairCarDto repairCarDto)
         {
-            var command = _mappper.Map<RepairCarCommand>(repairCarDto);
+            var command = _mapper.Map<RepairCarCommand>(repairCarDto);
             await _mediator.Send(command);
 
             return NoContent();
@@ -78,7 +73,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<int>> SetPriceCar([FromBody] SetPriceCarDto setPriceCarDto)
         {
-            var command = _mappper.Map<SetPriceVehicleCommand>(setPriceCarDto);
+            var command = _mapper.Map<SetPriceVehicleCommand>(setPriceCarDto);
             var price = await _mediator.Send(command);
 
             return Ok(price);   
@@ -93,7 +88,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<Guid>> CreateBus([FromBody] CreateBusDto createBusDto)
         {
-            var command = _mappper.Map<CreateBusCommand>(createBusDto);
+            var command = _mapper.Map<CreateBusCommand>(createBusDto);
             var id = await _mediator.Send(command);
 
             return Ok(id);
@@ -103,7 +98,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> UpdateBus([FromBody] UpdateBusDto updateBusDto)
         {
-            var command = _mappper.Map<UpdateBusCommand>(updateBusDto);
+            var command = _mapper.Map<UpdateBusCommand>(updateBusDto);
             await _mediator.Send(command);
 
             return NoContent();
@@ -124,7 +119,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> RepairBus([FromBody] RepairBusDto repairBusDto)
         {
-            var command = _mappper.Map<RepairBusCommand>(repairBusDto);
+            var command = _mapper.Map<RepairBusCommand>(repairBusDto);
             await _mediator.Send(command);
 
             return NoContent();
@@ -133,7 +128,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<int>> SetPriceBus([FromBody] SetPriceBusDto setPriceBusDto)
         {
-            var command = _mappper.Map<SetPriceVehicleCommand>(setPriceBusDto);
+            var command = _mapper.Map<SetPriceVehicleCommand>(setPriceBusDto);
             var price = await _mediator.Send(command);
 
             return Ok(price);
@@ -147,7 +142,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<Guid>> CreateTruck([FromBody] CreateTruckDto createTruckDto)
         {
-            var command = _mappper.Map<CreateTruckCommand>(createTruckDto);
+            var command = _mapper.Map<CreateTruckCommand>(createTruckDto);
             var id = await _mediator.Send(command);
 
             return Ok(id);
@@ -157,7 +152,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> UpdateTruck([FromBody] UpdateTruckDto updateTruckDto)
         {
-            var command = _mappper.Map<UpdateTruckCommand>(updateTruckDto);
+            var command = _mapper.Map<UpdateTruckCommand>(updateTruckDto);
             await _mediator.Send(command);
 
             return NoContent();
@@ -178,7 +173,7 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> RepairTruck([FromBody] RepairTruckDto repairTruckDto)
         {
-            var command = _mappper.Map<RepairTruckCommand>(repairTruckDto);
+            var command = _mapper.Map<RepairTruckCommand>(repairTruckDto);
             await _mediator.Send(command);
 
             return NoContent();
@@ -187,10 +182,11 @@ namespace ServiceStation.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<int>> SetPriceTruck([FromBody] SetPriceTruckDto setPriceTruckDto)
         {
-            var command = _mappper.Map<SetPriceVehicleCommand>(setPriceTruckDto);
+            var command = _mapper.Map<SetPriceVehicleCommand>(setPriceTruckDto);
             var price = await _mediator.Send(command);
 
             return Ok(price);
         }
     }
 }
+ 

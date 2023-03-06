@@ -8,7 +8,7 @@ namespace ServiceStation.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(Application.AssemblyMarker).Assembly);
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly(), typeof(Application.AssemblyMarker).Assembly));
             return services;
         }
     }

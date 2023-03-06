@@ -3,6 +3,7 @@ using ServiceStation.Application.Interfaces;
 using ServiceStation.Application;
 using ServiceStation.Persistense;
 using System.Reflection;
+using Microsoft.OpenApi.Models;
 
 namespace ServiceStation.API
 {
@@ -22,6 +23,14 @@ namespace ServiceStation.API
 
             builder.Services.AddApplication();
             builder.Services.AddPersistense(builder.Configuration);
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "My API",
+                    Version = "v1"
+                });
+            });
 
             builder.Services.AddCors(options =>
             {
@@ -37,10 +46,14 @@ namespace ServiceStation.API
             
             var app = builder.Build();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "ServiceStation API v1");
+            });
             app.UseRouting();
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
-
 
             app.MapControllers();
             
