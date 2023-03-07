@@ -11,7 +11,7 @@ namespace ServiceStation.Persistense
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DbConnection")));
 
-            services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
+            services.AddScoped<IAppDbContext>(provider => (IAppDbContext)provider.GetService<AppDbContext>());
 
             return services;
         }
