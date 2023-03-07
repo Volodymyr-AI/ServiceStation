@@ -4,6 +4,7 @@ using ServiceStation.Application;
 using ServiceStation.Persistense;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ServiceStation.API
 {
@@ -13,7 +14,8 @@ namespace ServiceStation.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddDbContext<AppDbContext>();
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
 
             builder.Services.AddAutoMapper(config =>
             {
@@ -23,6 +25,8 @@ namespace ServiceStation.API
 
             builder.Services.AddApplication();
             builder.Services.AddPersistense(builder.Configuration);
+
+
             builder.Services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
@@ -53,10 +57,11 @@ namespace ServiceStation.API
             });
             app.UseRouting();
             app.UseHttpsRedirection();
-            app.UseCors("AllowAll");
+            app.UseCors(builder => builder.AllowAnyOrigin());
 
             app.MapControllers();
-            
+            app.MapGet("/", () => "Hello World!");
+           
             app.Run();
         }
     }

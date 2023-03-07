@@ -9,9 +9,9 @@ namespace ServiceStation.Persistense
     {
         public static IServiceCollection AddPersistense(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<AppDbContext>();
-            services.AddScoped<IAppDbContext>(provider =>
-                (IAppDbContext)provider.GetService<AppDbContext>());
+            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DbConnection")));
+
+            services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
 
             return services;
         }

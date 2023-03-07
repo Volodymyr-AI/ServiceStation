@@ -12,8 +12,8 @@ using ServiceStation.Persistense;
 namespace ServiceStation.Persistense.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230223094359_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230307093340_EnitialMigration")]
+    partial class EnitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
