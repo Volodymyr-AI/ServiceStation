@@ -4,10 +4,9 @@ using ServiceStation.Domain;
 
 namespace ServiceStation.Persistense.EntityTypeConfiguration
 {
-    public class VehicleConfiguration<TEntity> : IEntityTypeConfiguration<TEntity>
-        where TEntity : Vehicle
+    public class VehicleConfiguration : IEntityTypeConfiguration<Vehicle>
     {
-        public virtual void Configure(EntityTypeBuilder<TEntity> builder)
+        public void Configure(EntityTypeBuilder<Vehicle> builder)
         {
             builder.HasKey(v => v.Id);
             builder.HasIndex(v => v.Id).IsUnique();

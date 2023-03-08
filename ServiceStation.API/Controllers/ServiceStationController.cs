@@ -81,9 +81,6 @@ namespace ServiceStation.API.Controllers
         }
 
 
-
-
-
         // Bus commands and queries
         [HttpPost("/bus")]
         [ProducesResponseType(StatusCodes.Status201Created)]

@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using ServiceStation.Application.Interfaces;
 using ServiceStation.Domain;
 using ServiceStation.Persistense.EntityTypeConfiguration;
 
 namespace ServiceStation.Persistense
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : DbContext, IAppDbContext
     {
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Car> Cars { get; set; }
@@ -14,12 +15,10 @@ namespace ServiceStation.Persistense
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.ApplyConfiguration(new CarConfiguration());
-        //    modelBuilder.ApplyConfiguration(new TruckConfiguration());  
-        //    modelBuilder.ApplyConfiguration(new BusConfiguration());
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new VehicleConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

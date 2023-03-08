@@ -17,6 +17,8 @@ namespace ServiceStation.API
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
 
+            builder.Services.AddScoped<IAppDbContext>(provider => provider.GetService<AppDbContext>());
+
             builder.Services.AddAutoMapper(config =>
             {
                 config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
