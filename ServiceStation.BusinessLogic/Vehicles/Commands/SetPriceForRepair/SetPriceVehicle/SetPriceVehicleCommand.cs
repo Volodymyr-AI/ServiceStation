@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace ServiceStation.BusinessLogic.SetPriceForRepair
+namespace ServiceStation.BusinessLogic.Vehicles.Commands.SetPriceForRepair.SetPriceVehicle
 {
     public class SetPriceVehicleCommand : IRequest<int>
     {

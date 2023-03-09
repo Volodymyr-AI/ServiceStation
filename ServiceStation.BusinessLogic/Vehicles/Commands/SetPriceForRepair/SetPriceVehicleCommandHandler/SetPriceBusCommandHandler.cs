@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ServiceStation.Application.Interfaces;
+using ServiceStation.BusinessLogic.Vehicles.Commands.SetPriceForRepair.SetPriceVehicle;
 using ServiceStation.Domain;
 using System;
 using System.Collections.Generic;
@@ -9,15 +10,15 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStation.BusinessLogic.SetPriceForRepair.SetPriceVehicleCommandHandler
+namespace ServiceStation.BusinessLogic.Vehicles.Commands.SetPriceForRepair.SetPriceVehicleCommandHandler
 {
-    public class SetPriceBusCommandHandler : IRequestHandler<SetPriceVehicleCommand, int>
-    { 
+    public class SetPriceBusCommandHandler : IRequestHandler<SetPriceBusCommand, int>
+    {
         private readonly IAppDbContext _context;
 
         public SetPriceBusCommandHandler(IAppDbContext context) => _context = context;
 
-        public async Task<int> Handle(SetPriceVehicleCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(SetPriceBusCommand request, CancellationToken cancellationToken)
         {
             var type = typeof(Bus);
             var properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);

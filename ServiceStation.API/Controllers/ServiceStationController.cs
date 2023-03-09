@@ -9,8 +9,8 @@ using ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm;
 using ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.GetQuery;
 using ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommand;
 using ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.UpdateCommand;
-using ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCoommand;
-using ServiceStation.BusinessLogic.SetPriceForRepair;
+using ServiceStation.BusinessLogic.Vehicles.Commands.RepairVehicle.RepairVehicleCoommand;
+using ServiceStation.BusinessLogic.Vehicles.Commands.SetPriceForRepair.SetPriceVehicle;
 
 namespace ServiceStation.API.Controllers
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceStation.BusinessLogic.RepairVehicle.RepairVehicleCoommand
+namespace ServiceStation.BusinessLogic.Vehicles.Commands.RepairVehicle.RepairVehicleCoommand
 {
     public class RepairCarCommand : RepairVehicleCommand
     {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ServiceStation.Application.Common.Mappings;
-using ServiceStation.BusinessLogic.SetPriceForRepair;
+using ServiceStation.BusinessLogic.Vehicles.Commands.SetPriceForRepair.SetPriceVehicle;
 
 namespace ServiceStation.API.Models.SetPriceDto
 {
