@@ -5,7 +5,6 @@ using ServiceStation.Persistense;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using ServiceStation.BusinessLogic;
 
 namespace ServiceStation.API
 {
@@ -27,19 +26,9 @@ namespace ServiceStation.API
             });
 
             builder.Services.AddApplication();
-            builder.Services.AddBusinessLogic();
             builder.Services.AddPersistense(builder.Configuration);
             
-
-            builder.Services.AddSwaggerGen(options =>
-            {
-                options.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "My API",
-                    Version = "v1"
-                });
-            });
-
+            
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", policy =>
@@ -54,11 +43,6 @@ namespace ServiceStation.API
             
             var app = builder.Build();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "ServiceStation API v1");
-            });
             app.UseRouting();
             app.UseHttpsRedirection();
             app.UseCors(builder => builder.AllowAnyOrigin());
