@@ -5,6 +5,7 @@ using ServiceStation.Persistense;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ServiceStation.API
 {
@@ -27,7 +28,8 @@ namespace ServiceStation.API
 
             builder.Services.AddApplication();
             builder.Services.AddPersistense(builder.Configuration);
-            
+
+            builder.Services.AddSwaggerGen();
             
             builder.Services.AddCors(options =>
             {
@@ -43,6 +45,8 @@ namespace ServiceStation.API
             
             var app = builder.Build();
 
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseRouting();
             app.UseHttpsRedirection();
             app.UseCors(builder => builder.AllowAnyOrigin());
