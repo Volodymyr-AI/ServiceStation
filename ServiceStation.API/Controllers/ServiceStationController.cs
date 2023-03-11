@@ -2,15 +2,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ServiceStation.API.Models.CreateVehicleDtos;
-using ServiceStation.API.Models.RepairVehicleDtos;
-using ServiceStation.API.Models.SetPriceDto;
 using ServiceStation.API.Models.UpdateVehicleDtos;
+using ServiceStation.Application.Vehicles.Commands.RepairVehicle.RepairCommand;
 using ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm;
 using ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.GetQuery;
 using ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommand;
 using ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.UpdateCommand;
-using ServiceStation.BusinessLogic.Vehicles.Commands.RepairVehicle.RepairVehicleCoommand;
-using ServiceStation.BusinessLogic.Vehicles.Commands.SetPriceForRepair.SetPriceVehicle;
 
 namespace ServiceStation.API.Controllers
 {
@@ -60,24 +57,14 @@ namespace ServiceStation.API.Controllers
             return NoContent();
         }
 
-        [HttpPost("/car/repair/{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> RepairCar([FromBody] RepairCarDto repairCarDto)
-        {
-            var command = _mapper.Map<RepairCarCommand>(repairCarDto);
-            await Mediator.Send(command);
-
-            return NoContent();
-        }
-
-        [HttpPost("/car/estimate/{id}")]
+        [HttpPost]
+        [Route("/car/reapair/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<int>> SetPriceCar([FromBody] SetPriceCarDto setPriceCarDto)
+        public async Task<IActionResult> RepairCar(Guid id)
         {
-            var command = _mapper.Map<SetPriceVehicleCommand>(setPriceCarDto);
-            var price = await Mediator.Send(command);
-
-            return Ok(price);   
+            var command = new RepairCarCommand(id);
+            await Mediator.Send(command);
+            return Ok();
         }
 
 
@@ -113,27 +100,16 @@ namespace ServiceStation.API.Controllers
             var vm = await Mediator.Send(query);
             return Ok(vm);
         }
-        [HttpPost("/bus/repair/{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> RepairBus([FromBody] RepairBusDto repairBusDto)
-        {
-            var command = _mapper.Map<RepairBusCommand>(repairBusDto);
-            await Mediator.Send(command);
 
-            return NoContent();
-        }
-        [HttpPost("/bus/estimate/{id}")]
+        [HttpPost]
+        [Route("/bus/reapair/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<int>> SetPriceBus([FromBody] SetPriceBusDto setPriceBusDto)
+        public async Task<IActionResult> RepairBus(Guid id)
         {
-            var command = _mapper.Map<SetPriceVehicleCommand>(setPriceBusDto);
-            var price = await Mediator.Send(command);
-
-            return Ok(price);
+            var command = new RepairBusCommand(id);
+            await Mediator.Send(command);
+            return Ok();
         }
-
-
-
 
         //Truck commands and queries
         [HttpPost("/truck")]
@@ -167,24 +143,17 @@ namespace ServiceStation.API.Controllers
             var vm = await Mediator.Send(query);
             return Ok(vm);
         }
-        [HttpPost("/truck/repair/{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> RepairTruck([FromBody] RepairTruckDto repairTruckDto)
-        {
-            var command = _mapper.Map<RepairTruckCommand>(repairTruckDto);
-            await Mediator.Send(command);
 
-            return NoContent();
-        }
-        [HttpPost("/truck/estimate/{id}")]
+        [HttpPost]
+        [Route("/truck/reapair/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<int>> SetPriceTruck([FromBody] SetPriceTruckDto setPriceTruckDto)
+        public async Task<IActionResult> RepairTruck(Guid id)
         {
-            var command = _mapper.Map<SetPriceVehicleCommand>(setPriceTruckDto);
-            var price = await Mediator.Send(command);
-
-            return Ok(price);
+            var command = new RepairTruckCommand(id);
+            await Mediator.Send(command);
+            return Ok();
         }
+
     }
 }
  
