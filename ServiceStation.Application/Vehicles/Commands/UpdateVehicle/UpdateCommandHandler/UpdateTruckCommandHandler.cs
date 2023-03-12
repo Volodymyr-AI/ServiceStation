@@ -35,6 +35,9 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.Upda
             entity.Hydraulics = request.Hydraulics;
             entity.State = (request.Engine + request.Wheels + request.Breaks + request.Undercarriage + request.Body + request.Hydraulics) / 6.0;
 
+            Math.Round(entity.State, 2, MidpointRounding.AwayFromZero);
+
+            await _appDbContext.SaveChangesAsync(cancellationToken);
             return entity.Id;
         }
     }

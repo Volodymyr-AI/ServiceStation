@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ServiceStation.API.Models.CreateVehicleDtos;
 using ServiceStation.API.Models.UpdateVehicleDtos;
 using ServiceStation.Application.Vehicles.Commands.RepairVehicle.RepairCommand;
+using ServiceStation.Application.Vehicles.Queries.GetPriceForRepair.SetPrice;
 using ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm;
 using ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.GetQuery;
 using ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommand;
@@ -48,13 +49,13 @@ namespace ServiceStation.API.Controllers
 
         [HttpPut]
         [Route("/car/{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateCar([FromBody] UpdateCarDto updateCarDto)
         {
             var command = _mapper.Map<UpdateCarCommand>(updateCarDto);
-            await Mediator.Send(command);
+            var result = await Mediator.Send(command);
 
-            return NoContent();
+            return Ok(result);
         }
 
         [HttpPost]
@@ -65,6 +66,16 @@ namespace ServiceStation.API.Controllers
             var command = new RepairCarCommand(id);
             await Mediator.Send(command);
             return Ok();
+        }
+        [HttpPost]
+        [Route("/car/estimate/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> EstimateCar(Guid id)
+        {
+            var command = new SetCarPriceCommand(id);
+            var price = await Mediator.Send(command);
+
+            return Ok(price);
         }
 
 
@@ -80,13 +91,13 @@ namespace ServiceStation.API.Controllers
         }
 
         [HttpPut("/bus/{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateBus([FromBody] UpdateBusDto updateBusDto)
         {
             var command = _mapper.Map<UpdateBusCommand>(updateBusDto);
-            await Mediator.Send(command);
+            var result = await Mediator.Send(command);
 
-            return NoContent();
+            return Ok(result);
         }
 
         [HttpGet("/bus/{id}")]
@@ -111,6 +122,17 @@ namespace ServiceStation.API.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("/bus/estimate/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> EstimateBus(Guid id)
+        {
+            var command = new SetBusPriceCommand(id);
+            var price = await Mediator.Send(command);
+
+            return Ok(price);
+        }
+
         //Truck commands and queries
         [HttpPost("/truck")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -123,13 +145,13 @@ namespace ServiceStation.API.Controllers
         }
 
         [HttpPut("/truck/{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateTruck([FromBody] UpdateTruckDto updateTruckDto)
         {
             var command = _mapper.Map<UpdateTruckCommand>(updateTruckDto);
-            await Mediator.Send(command);
+            var result = await Mediator.Send(command);
 
-            return NoContent();
+            return Ok(result);
         }
 
         [HttpGet("/truck/{id}")]
@@ -152,6 +174,17 @@ namespace ServiceStation.API.Controllers
             var command = new RepairTruckCommand(id);
             await Mediator.Send(command);
             return Ok();
+        }
+
+        [HttpPost]
+        [Route("/truck/estimate/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> EstimateTruck(Guid id)
+        {
+            var command = new SetTruckPriceCommand(id);
+            var price = await Mediator.Send(command);
+
+            return Ok(price);
         }
 
     }

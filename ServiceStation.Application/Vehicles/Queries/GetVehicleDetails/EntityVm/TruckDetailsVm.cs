@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
+using ServiceStation.Application.Common.Mappings;
 using ServiceStation.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm
 {
-    public class TruckDetailsVm
+    public class TruckDetailsVm : IMapWith<Truck>
     {
         public Guid Id { get; set; }
         public int Body { get; set; }

@@ -28,6 +28,8 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.Crea
                 State = (request.Body + request.Wheels + request.Engine + request.Breaks + request.Undercarriage + request.Hydraulics) / 6.0
             };
 
+            Math.Round(truck.State, 2, MidpointRounding.AwayFromZero);
+
             await _appDbContext.Trucks.AddAsync(truck, cancellationToken);
             await _appDbContext.SaveChangesAsync(cancellationToken);
 
