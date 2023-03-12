@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceStation.Application\ServiceStation.Application.csproj" />
-    <ProjectReference Include="..\ServiceStation.BusinessLogic\ServiceStation.BusinessLogic.csproj" />
     <ProjectReference Include="..\ServiceStation.Domain\ServiceStation.Domain.csproj" />
     <ProjectReference Include="..\ServiceStation.Persistense\ServiceStation.Persistense.csproj" />
   </ItemGroup>
