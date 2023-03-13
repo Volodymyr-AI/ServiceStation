@@ -59,7 +59,7 @@ namespace ServiceStation.API.Controllers
         }
 
         [HttpPost]
-        [Route("/car/reapair/{id}")]
+        [Route("/car/repair/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> RepairCar(Guid id)
         {
@@ -113,7 +113,7 @@ namespace ServiceStation.API.Controllers
         }
 
         [HttpPost]
-        [Route("/bus/reapair/{id}")]
+        [Route("/bus/repair/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> RepairBus(Guid id)
         {
@@ -167,7 +167,7 @@ namespace ServiceStation.API.Controllers
         }
 
         [HttpPost]
-        [Route("/truck/reapair/{id}")]
+        [Route("/truck/repair/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> RepairTruck(Guid id)
         {
