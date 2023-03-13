@@ -10,7 +10,6 @@ namespace ServiceStation.Application.Vehicles.Commands.RepairVehicle.RepairComma
     {
         private readonly IAppDbContext _context;
 
-
         public RepairBusCommandHandler(IAppDbContext context)
         {
             _context = context;
@@ -18,13 +17,15 @@ namespace ServiceStation.Application.Vehicles.Commands.RepairVehicle.RepairComma
 
         public async Task<Unit> Handle(RepairBusCommand request, CancellationToken cancellationToken)
         {
+
             var bus = await _context.Buses.FirstOrDefaultAsync(bus => bus.Id == request.Id, cancellationToken);
 
-            if (bus != null)
+ 
+            if(bus != null)
             {
                 var properties = bus.GetType().GetProperties().Where(p => p.PropertyType == typeof(int));
 
-                foreach (var property in properties)
+                foreach( var property in properties)
                 {
                     property.SetValue(bus, 100);
                 }
@@ -33,10 +34,10 @@ namespace ServiceStation.Application.Vehicles.Commands.RepairVehicle.RepairComma
                 bus.ChangeSeats = false;
             }
             else if (bus == null)
-            {
-                throw new NotFoundException(nameof(bus), request.Id);
+            { 
+                bus.State = 100.0;
+                bus.ChangeSeats = false;
             }
-
             await _context.SaveChangesAsync(cancellationToken);
 
             return Unit.Value;

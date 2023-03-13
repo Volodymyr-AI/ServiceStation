@@ -37,6 +37,9 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.Upda
             entity.ChangeSeats = request.ChangeSeats;
             entity.State = (request.Engine + request.Wheels + request.Breaks + request.Undercarriage + request.Body + request.InteriorAndHandrails) / 6.0;
 
+
+            Math.Round(entity.State, 2, MidpointRounding.AwayFromZero);
+
             await _appDbContext.SaveChangesAsync(cancellationToken);
 
             return entity.Id;

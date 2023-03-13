@@ -18,27 +18,26 @@ namespace ServiceStation.Application.Vehicles.Commands.RepairVehicle.RepairComma
 
         public async Task<Unit> Handle(RepairCarCommand request, CancellationToken cancellationToken)
         {
-            var car = await _context.Cars.FirstOrDefaultAsync(car => car.Id == request.Id, cancellationToken);
+            var car =
+                await _context.Cars.FirstOrDefaultAsync(car => car.Id == request.Id, cancellationToken);
 
-            if (car != null)
+            if(car != null)
             {
                 var properties = car.GetType().GetProperties().Where(p => p.PropertyType == typeof(int));
 
-                foreach (var property in properties)
+                foreach(var property in properties)
                 {
                     property.SetValue(car, 100);
                 }
-
                 car.State = 100.0;//fully repaired
                 car.WheelBalancing = false;
             }
-            else if (car == null)
+            else if(car == null)
             {
                 throw new NotFoundException(nameof(car), request.Id);
             }
 
             await _context.SaveChangesAsync(cancellationToken);
-
             return Unit.Value;
         }
     }
