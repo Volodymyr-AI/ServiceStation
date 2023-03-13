@@ -3,7 +3,9 @@ using ServiceStation.Application.Interfaces;
 using ServiceStation.Application;
 using ServiceStation.Persistense;
 using System.Reflection;
+using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using ServiceStation.BusinessLogic;
 
 namespace ServiceStation.API
 {
@@ -24,8 +26,8 @@ namespace ServiceStation.API
                 config.AddProfile(new AssemblyMappingProfile(typeof(IAppDbContext).Assembly));
             });
 
-
-            builder.Services.AddApplication(); 
+            builder.Services.AddApplication();
+            builder.Services.AddBusinessLogic();
             builder.Services.AddPersistense(builder.Configuration);
 
             builder.Services.AddSwaggerGen();
