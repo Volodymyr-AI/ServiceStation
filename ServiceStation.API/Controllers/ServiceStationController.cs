@@ -10,8 +10,6 @@ using ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm;
 using ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.GetQuery;
 using ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.CreateCommand;
 using ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.UpdateCommand;
-using ServiceStation.Domain;
-using ServiceStation.Persistense;
 
 namespace ServiceStation.API.Controllers
 {
@@ -82,37 +80,37 @@ namespace ServiceStation.API.Controllers
             return Ok(price);
         }
 
-        [HttpPost]
-        [Route("/vehicle/bulk")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> BulkInsertVehicles([FromBody] List<CreateVehicleDto> createVehicleDtos)
-        {
-            var commands = new List<CreateVehicleCommand>();
-
-            foreach (var createVehicleDto in createVehicleDtos)
-            {
-                CreateVehicleCommand command;
-                switch (createVehicleDto.Type)
-                {
-                    case VehicleType.Car:
-                        command = _mapper.Map<CreateCarCommand>(createVehicleDto);
-                        break;
-                    case VehicleType.Bus:
-                        command = _mapper.Map<CreateBusCommand>(createVehicleDto);
-                        break;
-                    case VehicleType.Truck:
-                        command = _mapper.Map<CreateTruckCommand>(createVehicleDto);
-                        break;
-                    default:
-                        return BadRequest("Invalid vehicle type");
-                }
-
-                commands.Add(command);
-            }
-
-            var result = await Mediator.Send(new BulkInsertVehiclesCommand(commands));
-            return Ok(result);
-        }
+        //[HttpPost]
+        //[Route("/vehicle/bulk")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //public async Task<IActionResult> BulkInsertVehicles([FromBody] List<CreateVehicleDto> createVehicleDtos)
+        //{
+        //    var commands = new List<CreateVehicleCommand>();
+        //
+        //    foreach (var createVehicleDto in createVehicleDtos)
+        //    {
+        //        CreateVehicleCommand command;
+        //        switch (createVehicleDto.Type)
+        //        {
+        //            case VehicleType.Car:
+        //                command = _mapper.Map<CreateCarCommand>(createVehicleDto);
+        //                break;
+        //            case VehicleType.Bus:
+        //                command = _mapper.Map<CreateBusCommand>(createVehicleDto);
+        //                break;
+        //            case VehicleType.Truck:
+        //                command = _mapper.Map<CreateTruckCommand>(createVehicleDto);
+        //                break;
+        //            default:
+        //                return BadRequest("Invalid vehicle type");
+        //        }
+        //
+        //        commands.Add(command);
+        //    }
+        //
+        //    var result = await Mediator.Send(new BulkInsertVehiclesCommand(commands));
+        //    return Ok(result);
+        //}
 
         // Bus commands and queries
         [HttpPost("/bus")]

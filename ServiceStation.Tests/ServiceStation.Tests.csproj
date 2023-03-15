@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceStation.Application\ServiceStation.Application.csproj" />
-    <ProjectReference Include="..\ServiceStation.Persistense\ServiceStation.Persistense.csproj" />
+    <ProjectReference Include="..\ServiceStation.Persistense\ServiceStation.DataAccess.SQL.csproj" />
   </ItemGroup>
 
 </Project>
