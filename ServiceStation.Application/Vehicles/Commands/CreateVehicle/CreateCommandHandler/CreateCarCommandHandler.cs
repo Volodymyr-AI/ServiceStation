@@ -18,7 +18,7 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.Crea
 
         public async Task<Guid> Handle(CreateCarCommand request, CancellationToken cancellationToken)
         {
-            var car = new Car
+            var car = new CarEntity
             {
                 Id = Guid.NewGuid(),
                 Body = request.Body,

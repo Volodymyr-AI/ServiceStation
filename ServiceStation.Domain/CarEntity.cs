@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ServiceStation.Domain
 {
-    public class Bus : Vehicle
-    {
-        public int InteriorAndHandrails { get; set; }
-        public bool ChangeSeats { get; set; }
+    public class CarEntity : VehicleEntity
+    { 
+        public bool WheelBalancing { get; set; }
     }
 }

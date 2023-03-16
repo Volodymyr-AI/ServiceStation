@@ -5,10 +5,10 @@ namespace ServiceStation.Application.Interfaces
 {
     public interface IAppDbContext
     {
-        DbSet<Vehicle> Vehicles { get; }
-        DbSet<Car> Cars { get; set; }
-        DbSet<Bus> Buses { get; set; }
-        DbSet<Truck> Trucks { get; set; }
+        DbSet<VehicleEntity> Vehicles { get; }
+        DbSet<CarEntity> Cars { get; set; }
+        DbSet<BusEntity> Buses { get; set; }
+        DbSet<TruckEntity> Trucks { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

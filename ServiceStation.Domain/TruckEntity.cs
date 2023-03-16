@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServiceStation.Domain
 {
-    public class Truck : Vehicle
+    public class TruckEntity : VehicleEntity
     {
         public int Hydraulics { get; set; }
     }

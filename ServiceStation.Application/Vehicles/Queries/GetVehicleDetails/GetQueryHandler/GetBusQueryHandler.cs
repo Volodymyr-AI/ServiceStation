@@ -33,7 +33,7 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.GetQuery
 
             if(entity == null || entity.Id != request.Id)
             {
-                throw new NotFoundException(nameof(Bus), request.Id);
+                throw new NotFoundException(nameof(BusEntity), request.Id);
             }
 
             return _mapper.Map<BusDetailsVm>(entity);

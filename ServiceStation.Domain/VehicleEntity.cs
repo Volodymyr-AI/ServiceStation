@@ -2,7 +2,7 @@
 
 namespace ServiceStation.Domain
 {
-    public abstract class Vehicle
+    public abstract class VehicleEntity
     {
         public Guid Id { get; set; }
         public int Body { get; set; }

@@ -22,7 +22,7 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.CreateVehicle.Crea
 
         public async Task<Guid> Handle(CreateBusCommand request, CancellationToken cancellationToken)
         {
-            var bus = new Bus
+            var bus = new BusEntity
             {
                 Id = Guid.NewGuid(),
                 Body = request.Body,

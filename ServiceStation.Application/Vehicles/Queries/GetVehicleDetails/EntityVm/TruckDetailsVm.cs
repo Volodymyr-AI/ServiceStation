@@ -4,7 +4,7 @@ using ServiceStation.Domain;
 
 namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm
 {
-    public class TruckDetailsVm : IMapWith<Truck>
+    public class TruckDetailsVm : IMapWith<TruckEntity>
     {
         public Guid Id { get; set; }
         public int Body { get; set; }
@@ -18,7 +18,7 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.EntityVm
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Truck, TruckDetailsVm>()
+            profile.CreateMap<TruckEntity, TruckDetailsVm>()
                 .ForMember(truckvm => truckvm.Body,
                     opt => opt.MapFrom(truck => truck.Body))
                 .ForMember(truckvm => truckvm.Wheels,

@@ -28,7 +28,7 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.GetQuery
 
             if(entity == null || entity.Id != request.Id)
             {
-                throw new NotFoundException(nameof(Car), request.Id);
+                throw new NotFoundException(nameof(CarEntity), request.Id);
             }
 
             return _mapper.Map<CarDetailsVm>(entity);

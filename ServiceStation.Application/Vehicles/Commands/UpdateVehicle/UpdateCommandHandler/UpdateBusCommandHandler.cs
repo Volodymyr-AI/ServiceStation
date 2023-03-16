@@ -24,7 +24,7 @@ namespace ServiceStation.Application.Vehicles.VehicleCommands.UpdateVehicle.Upda
 
             if (entity == null || entity.Id != request.Id)
             {
-                throw new NotFoundException(nameof(Bus), request.Id);
+                throw new NotFoundException(nameof(BusEntity), request.Id);
             }
 
             entity.Engine = request.Engine;

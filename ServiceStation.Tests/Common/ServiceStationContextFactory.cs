@@ -17,7 +17,7 @@ namespace ServiceStation.Tests.Common
             var context = new AppDbContext(options);
             context.Database.EnsureCreated();
             context.Cars.AddRange(
-                new Car
+                new CarEntity
                 {
                     Id = Guid.Parse("C0BB89CE-67DA-45E1-B83A-65FC9AFF9AA1"),
                     Body = 100,
@@ -27,7 +27,7 @@ namespace ServiceStation.Tests.Common
                     Undercarriage = 60,
                     WheelBalancing = true
                 },
-                new Car
+                new CarEntity
                 {
                     Id = Guid.Parse("B8CCE0FC-C53B-4207-8B80-4494B44CD551"),
                     Body = 100,
@@ -37,7 +37,7 @@ namespace ServiceStation.Tests.Common
                     Undercarriage = 100,
                     WheelBalancing = false
                 },
-                new Car
+                new CarEntity
                 {
                     Id = CarIdForDelete,
                     Body = 90,
@@ -47,7 +47,7 @@ namespace ServiceStation.Tests.Common
                     Undercarriage = 90,
                     WheelBalancing = true
                 },
-                new Car
+                new CarEntity
                 {
                     Id = CarIdForUpdate,
                     Body = 80,

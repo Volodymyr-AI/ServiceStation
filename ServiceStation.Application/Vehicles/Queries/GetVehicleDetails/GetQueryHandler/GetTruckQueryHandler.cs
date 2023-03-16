@@ -27,7 +27,7 @@ namespace ServiceStation.Application.Vehicles.Queries.GetVehicleDetails.GetQuery
                     truck.Id == request.Id, cancellationToken);
             if (entity == null || entity.Id != request.Id)
             {
-                throw new NotFoundException(nameof(Truck), request.Id);
+                throw new NotFoundException(nameof(TruckEntity), request.Id);
             }
 
             return _mapper.Map<TruckDetailsVm>(entity);
