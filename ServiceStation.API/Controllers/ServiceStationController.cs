@@ -54,9 +54,6 @@ namespace ServiceStation.API.Controllers
         {
             var command = _mapper.Map<UpdateCarCommand>(updateCarDto);
             var result = await Mediator.Send(command);
-
-
-
             return Ok(result);
         }
 

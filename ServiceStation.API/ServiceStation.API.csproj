@@ -20,10 +20,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ServiceStation.Application\ServiceStation.Application.csproj" />
-    <ProjectReference Include="..\ServiceStation.Domain\ServiceStation.Domain.csproj" />
-    <ProjectReference Include="..\ServiceStation.Persistense\ServiceStation.DataAccess.SQL.csproj" />
-  </ItemGroup>
-
 </Project>
