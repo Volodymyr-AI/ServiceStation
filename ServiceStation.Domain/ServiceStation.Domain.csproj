@@ -10,4 +10,9 @@
     <PackageReference Include="MediatR" Version="12.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceStation.Application\ServiceStation.Application.csproj" />
+    <ProjectReference Include="..\ServiceStation.Persistense\ServiceStation.DataAccess.SQL.csproj" />
+  </ItemGroup>
+
 </Project>
