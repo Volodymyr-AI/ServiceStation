@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ServiceStation.API.IRepository;
 using ServiceStation.API.Models.CreateVehicleDtos;
 using ServiceStation.API.Models.UpdateVehicleDtos;
 using ServiceStation.Application.Interfaces;
@@ -17,10 +18,11 @@ namespace ServiceStation.API.Controllers
     [Route("api/[controller]")]
     public class ServiceStationController : BaseController
     {
-        private readonly IMapper _mapper;
-        public ServiceStationController(IMapper mapper)
+private readonly IMapper _mapper;
+        public ServiceStationController(IMapper mapper, ICarRepository carRepository)
         {
             _mapper = mapper;
+            _carRepository = carRepository;
         }
 
         // Car commands and queries
