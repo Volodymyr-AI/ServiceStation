@@ -8,5 +8,6 @@ namespace ServiceStation.DataAccess.Rpository
 {
     public interface ICarRepository
     {
+        Car
     }
 }
